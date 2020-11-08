@@ -39,7 +39,7 @@ int main()
 
     dim3 blocks{};
     dim3 threads{count};
-    vectorSum<< < blocks, threads >> > (dVec1, dVec2, dRes);
+    vectorSum <<< blocks, threads >>> (dVec1, dVec2, dRes);
     cudaMemcpy(cdRes.data(), dRes, count*sizeof(float), cudaMemcpyDeviceToHost);
 
     cudaFree(dVec1);
@@ -57,7 +57,7 @@ int main()
     std::transform(hVec1.begin(), hVec1.end(), hVec2.begin(), hRes.begin(), [](const auto & i, const auto & j) {return i + j; });
     std::cout << " \n normal took " << (std::chrono::system_clock::now() - st).count() << " nano seconds ";
 
-    int indicate{};
+    double indicate{};
     std::cout<<"\n\n\n\n\n";
     for (size_t i{}; i < cdRes.size(); i++) indicate += cdRes[i] - hRes[i];
 
