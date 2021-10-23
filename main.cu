@@ -16,7 +16,6 @@ __global__ void vectorSum( float const *  v1, float const *  v2, float *  v3)
 int main()
 {
     unsigned int count = 50000000;
-
     std::vector<float> hVec1(count, 2.2f);
     std::vector<float> hVec2(count, 1.1f);
     std::vector<float> hRes(count, 0.0f);
