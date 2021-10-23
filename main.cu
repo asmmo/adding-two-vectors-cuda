@@ -22,7 +22,6 @@ int main()
     std::vector<float> cdRes(count, 0.0f);
 
     auto st = std::chrono::system_clock::now();
-
     float* dVec1{};
     cudaMalloc(&dVec1, count * sizeof(float));
 
